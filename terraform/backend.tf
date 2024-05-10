@@ -1,6 +1,6 @@
 terraform {
  backend "gcs" {
-    bucket = ""
+    bucket = "cs-ew1-amazon-tracker-264915-github-gcf"
     prefix = "terraform/bq/state"
  }
 }

@@ -5,6 +5,11 @@ data "archive_file" "source" {
     output_path = "/tmp/function.zip"
 }
 
+resource "google_storage_bucket" "function_bucket" {
+  name     = "cs-ew1-amazon-tracker-264915-github-gcf-code"
+  location = "europe-west1"
+}
+
 # Add source code zip to the Cloud Function's bucket
 resource "google_storage_bucket_object" "zip" {
     source       = data.archive_file.source.output_path
@@ -25,7 +30,7 @@ resource "google_storage_bucket_object" "zip" {
 # Create the Cloud function triggered by a `Finalize` event on the bucket
 resource "google_cloudfunctions_function" "function" {
     name                  = "demo-unit-test-nodejs"
-    runtime               = "node20"  
+    runtime               = "nodejs20"  
 
     # Get the source code of the cloud function as a Zip compression
     source_archive_bucket = google_storage_bucket.function_bucket.name
