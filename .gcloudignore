@@ -1,5 +1,6 @@
-/node_modules/
+/src/node_modules/
 *~
 .git
 .gcloudignore
 .gitignore
+/terraform/
