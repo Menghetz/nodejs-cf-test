@@ -22,4 +22,4 @@ jobs:
         run: cd src && npm install
 
       - name: Run Jest tests
-        run: npm test
+        run: cd src && npm test
