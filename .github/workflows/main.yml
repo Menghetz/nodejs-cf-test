@@ -18,11 +18,8 @@ jobs:
         with:
           node-version: '20'
 
-      - name: Change directory
-        run: cd src
-
       - name: Install dependencies
-        run: npm install
+        run: cd src && npm install
 
       - name: Run Jest tests
         run: npm test
