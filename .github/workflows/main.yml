@@ -1,6 +1,7 @@
 name: Run Tests
 
 on: push
+#   # adapt this in a real world scenario as you probably want to execute tests only on pull request 
 #   pull_request:
 #     branches:
 #       - main
