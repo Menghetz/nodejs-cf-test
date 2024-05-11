@@ -6,7 +6,7 @@ data "archive_file" "source" {
 }
 
 resource "google_storage_bucket" "function_bucket" {
-  name     = "cs-ew1-amazon-tracker-264915-github-gcf-code"
+  name     = var.code_bucket_name
   location = "europe-west1"
 }
 
@@ -40,18 +40,3 @@ resource "google_cloudfunctions_function" "function" {
     entry_point           = "helloHttp"
     trigger_http          = true
 }
-
-# resource "google_service_account" "service_account" {
-#   account_id   = "cloud-function-invoker"
-#   display_name = "Cloud Function Tutorial Invoker Service Account"
-# }
-
-# resource "google_cloudfunctions_function_iam_member" "invoker" {
-#   # Be sure the service account you use for Terraform has Function Cloud Admin role to assign the role invoker role
-#   project        = google_cloudfunctions_function.function.project
-#   region         = google_cloudfunctions_function.function.region
-#   cloud_function = google_cloudfunctions_function.function.name
-
-#   role   = "roles/cloudfunctions.invoker" 
-#   member = "serviceAccount:${google_service_account.service_account.email}"
-# }
